@@ -38,8 +38,19 @@ class HashMap {
       this.resize();
     }
   }
+  get(key) {
+    let index = this.hash(key) % this.buckets.length;
+    const bucket = this.buckets[index];
+    for (let pair of bucket) {
+      if (pair[0] === key) {
+        return pair[1];
+      } else {
+        return undefined;
+      }
+    }
+  }
 }
 let a = new HashMap();
-a.set("banana", "yellow");
 a.set("banana", "green");
-console.log(a.buckets);
+console.log(a.get("kjs"));
+//console.log(a.buckets);
